@@ -1,0 +1,22 @@
+uuid: acab31fe-9639-4382-b659-850d3ae64e39
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - emtrain
+_core:
+  default_config_hash: oXUb3JZR2WW5VOdw4HrhRicCsq51mCgLfRyvheG68ck
+id: emtrain_breadcrumbs
+theme: emtrain
+region: header
+weight: 0
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  provider: system
+  label_display: '0'
+visibility: {  }

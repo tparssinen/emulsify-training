@@ -1,0 +1,22 @@
+uuid: bfca0982-178b-4ff3-ba14-4719d0b52463
+langcode: en
+status: true
+dependencies:
+  theme:
+    - emtrain
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: emtrain_local_tasks
+theme: emtrain
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

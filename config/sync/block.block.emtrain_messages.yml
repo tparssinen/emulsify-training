@@ -1,0 +1,22 @@
+uuid: 29a0766c-8341-4786-80d6-01e497c611d7
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - emtrain
+_core:
+  default_config_hash: KHQIJ7Vfl25lTjzIc7qIvnuistt-Mw2O0kG4jCofmkI
+id: emtrain_messages
+theme: emtrain
+region: header
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

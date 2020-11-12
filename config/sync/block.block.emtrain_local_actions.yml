@@ -1,0 +1,20 @@
+uuid: d244c442-8420-45d3-a39e-cc327b6c6d2a
+langcode: en
+status: true
+dependencies:
+  theme:
+    - emtrain
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: emtrain_local_actions
+theme: emtrain
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }
