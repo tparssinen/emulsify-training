@@ -1,0 +1,115 @@
+name: silta
+recipe: drupal9
+
+config:
+  php: '7.3'
+  via: nginx
+  webroot: web
+  database: mariadb:10.3
+  xdebug: false
+
+tooling:
+  grumphp:
+    description: Runs grumphp commands
+    cmd:
+      - appserver: ./vendor/bin/grumphp
+  npm:
+    description: Runs npm commands
+    service: node
+  xdebug-on:
+    service: appserver
+    description: Enables xdebug for nginx
+    cmd: docker-php-ext-enable xdebug && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disables xdebug for nginx
+    cmd: rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-profiler-on:
+    service: appserver
+    description: Enable xdebug profiler.
+    cmd: echo "xdebug.profiler_enable = 1\\nxdebug.profiler_output_dir = /app" >> /usr/local/etc/php/conf.d/xxx-lando-default.ini && pkill -o -USR2 php-fpm
+    user: root
+  xdebug-profiler-off:
+    service: appserver
+    description: Disable xdebug profiler.
+    cmd: pkill -o -USR2 php-fpm && cp /usr/local/etc/php/conf.d/xxx-lando-default.ini /tmp/lando.ini && sed -i '/xdebug\.profiler/d' /tmp/lando.ini && cp /tmp/lando.ini /usr/local/etc/php/conf.d/xxx-lando-default.ini
+    user: root
+
+services:
+  appserver:
+    build:
+      - composer install
+    overrides:
+      environment:
+        HASH_SALT: notsosecurehash
+  # chrome:
+  #   type: compose
+  #   services:
+  #     image: selenium/standalone-chrome
+  #     user: root
+  #     ports:
+  #       - "4444:4444"
+  #     volumes:
+  #       - /dev/shm:/dev/shm
+  #     command: /opt/bin/entry_point.sh
+  # elasticsearch:
+  #   type: compose
+  #   meUser: elasticsearch
+  #   ssl: true
+  #   sslExpose: false
+  #   services:
+  #     image: blacktop/elasticsearch:7
+  #     command: /elastic-entrypoint.sh elasticsearch
+  #     ports:
+  #       - "9200:9200"
+  #       - "9300:9300"
+  #     volumes:
+  #       - ./.lando/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  #       - data_volume:/usr/share/elasticsearch/data
+  #   volumes:
+  #     data_volume:
+  #   run_as_root:
+  #     # Install `analysis-icu` plugin after ES service boots up
+  #     - elasticsearch-plugin install analysis-icu
+  #   overrides:
+  #     environment:
+  #       JAVA_HOME: /usr/lib/jvm/default-jvm
+  #       ES_JAVA_OPTS: -Xms512m -Xmx512m
+  # kibana:
+  #   type: compose
+  #   meUser: kibana
+  #   services:
+  #     image: blacktop/kibana:7
+  #     command: /docker-entrypoint.sh kibana
+  #     ports:
+  #       - "5601:5601"
+  #     depends_on:
+  #       - elasticsearch
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+  node:
+    type: node
+    build:
+      - npm install
+
+proxy:
+  # elasticsearch:
+  #   - elasticsearch-silta.lndo.site:9200
+  # kibana:
+  #   - kibana-silta.lndo.site:5601
+  mailhog:
+    - mail-silta.lndo.site
+
+events:
+  post-db-import:
+    - appserver: cd $LANDO_WEBROOT && drush cache:rebuild -y && drush @local user:login
+
+env_file:
+  - .lando/.env
+
+# Tested with Lando version
+version: v3.0.9
