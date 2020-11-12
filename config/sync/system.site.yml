@@ -1,14 +1,14 @@
-uuid: 57077327-4dc0-4680-8b8a-c1242bbeb00d
+uuid: edfa12b0-ff92-4689-a06c-79d3b22b6ab9
 name: 'Emulsify training'
 mail: teemu.parssinen@wunder.io
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en
 default_langcode: en
 _core:
-  default_config_hash: yXadRE77Va-G6dxhd2kPYapAvbnSvTF6hO4oXiOEynI
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
