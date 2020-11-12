@@ -1,0 +1,16 @@
+# Breakpoints - change based on site need
+emtrain.small:
+  label: small
+  mediaQuery: 'all and (min-width: 25em)'
+emtrain.small-med:
+  label: small-med
+  mediaQuery: 'all and (min-width: 26em)'
+emtrain.small-large:
+  label: small-large
+  mediaQuery: 'all and (min-width: 41em)'
+emtrain.medium:
+  label: medium
+  mediaQuery: 'all and (min-width: 48em)'
+emtrain.large:
+  label: large
+  mediaQuery: 'all and (min-width: 61.25em)'
