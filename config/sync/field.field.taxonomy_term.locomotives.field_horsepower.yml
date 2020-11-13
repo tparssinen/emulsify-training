@@ -1,0 +1,23 @@
+uuid: e090185c-803e-4fd0-9ba7-21ea55f11805
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_horsepower
+    - taxonomy.vocabulary.locomotives
+id: taxonomy_term.locomotives.field_horsepower
+field_name: field_horsepower
+entity_type: taxonomy_term
+bundle: locomotives
+label: Horsepower
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
