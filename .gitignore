@@ -7,7 +7,7 @@
 /web/.gitignore
 /web/core/
 /web/modules/.gitignore
-/web/modules/contrib/
+# /web/modules/contrib/
 /web/themes/.gitignore
 /web/themes/contrib/
 /web/profiles/.gitignore

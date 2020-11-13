@@ -1,0 +1,5 @@
+services:
+  warden.commands:
+    class: \Drupal\warden\Commands\WardenCommands
+    tags:
+      - { name: drush.command }

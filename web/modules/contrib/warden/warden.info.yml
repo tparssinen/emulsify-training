@@ -1,0 +1,11 @@
+name: Warden
+description: 'Provides an overview of all the available updates for your Drupal website using an external service.'
+core_version_requirement: ^9
+type: module
+
+configure: warden.form
+
+# Information added by Drupal.org packaging script on 2020-07-22
+version: '3.0.0-rc1'
+project: 'warden'
+datestamp: 1595435704
