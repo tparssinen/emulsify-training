@@ -1,0 +1,30 @@
+{
+  "name": "drupal/warden",
+  "description": "A module to link Drupal website with Warden dashboard.",
+  "type": "drupal-module",
+  "license": "GPL-2.0+",
+  "support": {
+    "issues": "https://drupal.org/project/issues/warden",
+    "source": "https://drupal.org/project/warden"
+  },
+  "require": {
+    "teamdeeson/wardenapi": "^1.0.0"
+  },
+  "keywords": [
+    "Drupal",
+    "Warden"
+  ],
+  "autoload": {
+    "psr-4": {
+      "Drupal\\warden\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "extra": {
+    "drush": {
+      "services": {
+        "drush.services.yml": "^9"
+      }
+    }
+  }
+}
