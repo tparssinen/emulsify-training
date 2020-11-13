@@ -1,3 +1,9 @@
+.card {
+  .image {
+    margin-bottom: $space;
+  }
+}
+
 .card__heading {
   @include heading-large($font-size: 1.3rem);
   @include no-bottom;
@@ -30,6 +36,7 @@
 
 /* Variations */
 .card--bg {
-  background-color: clr(highlight-high);
+  background-color: clr(muted);
+  border: 1px solid clr(highlight);
   padding: 1em;
 }
